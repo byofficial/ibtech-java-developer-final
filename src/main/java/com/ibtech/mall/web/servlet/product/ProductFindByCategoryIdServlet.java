@@ -7,30 +7,25 @@ import com.ibtech.mall.xml.ProductXml;
 import org.w3c.dom.Document;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "ProductFindByIdServlet", value = "/api/product")
-public class ProductFindByIdServlet extends HttpServlet {
+@WebServlet(name = "ProductFindByCategoryIdServlet", value = "/api/products/category")
+public class ProductFindByCategoryIdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Product product;
-            long productId = Long.parseLong(request.getParameter("id"));
+            List<Product> productList;
+            long categoryId = Long.parseLong(request.getParameter("id"));
             ProductManager productManager = new ProductManager();
-            product = productManager.findById(productId);
-            if (product == null) {
-                response.sendError(404);
-            } else {
-                Document document = ProductXml.format(product);
-                response.setContentType("application/xml;charset=UTF-8");
-
-                XmlHelper.dump(document, response.getOutputStream());
-            }
+            productList = productManager.findByCategoryId(categoryId);
+            Document document = ProductXml.format(productList);
+            response.setContentType("application/xml;charset=UTF-8");
+            XmlHelper.dump(document, response.getOutputStream());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,7 +4,6 @@ import com.ibtech.mall.database.entity.Product;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductManager extends BaseManager<Product> implements ICrudRepo<Product> {
@@ -84,6 +83,24 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         }
 
         return product;
+    }
+
+    public  List<Product>  findByCategoryId(long id) {
+        List<Product> productList = null;
+        try {
+            connect();
+            String sql = "SELECT * FROM Product WHERE categoryId=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
+            ResultSet rs = statement.executeQuery();
+            productList = parseList(rs);
+            disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return productList;
+
     }
 
     @Override

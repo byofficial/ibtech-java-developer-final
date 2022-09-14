@@ -10,21 +10,24 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-public class ProductFindByIdClient {
+public class ProductFindByCategoryIdClient {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-        long productId = 3;
-        String address = String.format(System.getenv("SITE_URL") + "api/product?id=%d", productId);
+        long categoryId = 1;
+        String address = String.format(System.getenv("SITE_URL") + "api/products/category?id=%d", categoryId);
 
         InputStream in = WebHelper.get(address);
         Document document = XmlHelper.parse(in);
-        Product product = ProductXml.parse(document);
+        List<Product> productList = ProductXml.parseList(document);
 
-        System.out.println(product.getProductId() + " "
-                + product.getProductName() + " "
-                + product.getImagePath() + " "
-                + product.getSalesPrice() + " "
-                + product.getCategoryId());
+        for (Product product : productList) {
+            System.out.println(product.getProductId() + " "
+                    + product.getProductName() + " "
+                    + product.getImagePath() + " "
+                    + product.getSalesPrice() + " "
+                    + product.getCategoryId());
+        }
 
 
     }

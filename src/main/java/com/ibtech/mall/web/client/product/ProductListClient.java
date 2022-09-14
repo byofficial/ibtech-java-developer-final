@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProductListClient {
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-        String address = System.getenv("SITE_URL") + "/api/products";
+        String address = System.getenv("SITE_URL") + "api/products";
         InputStream in = WebHelper.get(address);
         Document document = XmlHelper.parse(in);
         List<Product> productList = ProductXml.parseList(document);
