@@ -5,7 +5,7 @@ public class Product implements IEntity {
     private String productName;
     private String imagePath;
     private double salesPrice;
-    private Category category;
+    private long categoryId;
 
     public Product() {
     }
@@ -49,11 +49,11 @@ public class Product implements IEntity {
         this.salesPrice = salesPrice;
     }
 
-    public Category getCategory() {
-        return category;
+    public long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
 }
