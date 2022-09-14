@@ -1,4 +1,4 @@
-package com.ibtech.webproject;
+package com.ibtech.mall;
 
 import java.io.*;
 import javax.servlet.http.*;
