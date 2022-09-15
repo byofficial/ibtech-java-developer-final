@@ -3,7 +3,7 @@ package com.ibtech.mall.database.entity;
 public class Order extends Product implements IEntity {
     private long orderId;
     private int quantity;
-    private User user;
+    private Account user;
 
     public Order() {
     }
@@ -29,11 +29,11 @@ public class Order extends Product implements IEntity {
         this.quantity = quantity;
     }
 
-    public User getUser() {
+    public Account getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Account user) {
         this.user = user;
     }
 }
