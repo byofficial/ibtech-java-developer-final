@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
     <a href="" class="text-decoration-none d-block d-lg-none">
         <h1 class="m-0 display-5 font-weight-semi-bold"><span
@@ -24,11 +25,11 @@
             <%
                 if (auth == null) {
             %>
-            <a href="login.jsp" class="nav-item nav-link">Login</a>
+            <a href="login.jsp" class="nav-item nav-link">Giriş</a>
             <%
             } else {
             %>
-            Merhaba, <%= auth.getAccountName()%>!
+            <li class="nav-item"><a class="nav-link" href="logout">Çıkış</a></li>
             <%
                 }
             %>

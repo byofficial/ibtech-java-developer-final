@@ -1,8 +1,4 @@
 <%@ page import="com.ibtech.mall.database.entity.Account" %>
-<%@ page import="com.ibtech.mall.database.connection.DbCon" %>
-<%@ page import="com.ibtech.mall.database.entity.Product" %>
-<%@ page import="com.ibtech.mall.database.entity.Cart" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     Account auth = (Account) request.getSession().getAttribute("auth");
