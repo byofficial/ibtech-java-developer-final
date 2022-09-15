@@ -6,7 +6,6 @@
         request.setAttribute("person", auth);
     }
 %>
-
 <!DOCTYPE html>
 <html>
 <head>

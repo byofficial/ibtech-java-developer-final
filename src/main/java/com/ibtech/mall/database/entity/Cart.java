@@ -2,9 +2,16 @@ package com.ibtech.mall.database.entity;
 
 public class Cart extends Product implements IEntity {
     private long cartId;
-    private int quantity;
+    private long quantity;
 
     public Cart() {
+
+    }
+
+    public Cart(long cartId, long productId, String getProductName, String imagePath, double salesPrice, long quantity) {
+        super(productId, getProductName, imagePath, salesPrice);
+        this.cartId = cartId;
+        this.quantity = quantity;
     }
 
     public Cart(long cartId, int quantity) {
@@ -20,11 +27,11 @@ public class Cart extends Product implements IEntity {
         this.cartId = cartId;
     }
 
-    public int getQuantity() {
+    public long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
 }

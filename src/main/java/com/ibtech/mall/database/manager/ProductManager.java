@@ -85,7 +85,7 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         return product;
     }
 
-    public  List<Product>  findByCategoryId(long id) {
+    public List<Product> findByCategoryId(long id) {
         List<Product> productList = null;
         try {
             connect();
@@ -98,9 +98,7 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return productList;
-
     }
 
     @Override
