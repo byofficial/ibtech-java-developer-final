@@ -1,7 +1,7 @@
-<%@ page import="com.ibtech.mall.database.entity.User" %>
+<%@ page import="com.ibtech.mall.database.entity.Account" %>
 
 <%
-    User auth = (User) request.getSession().getAttribute("auth");
+    Account auth = (Account) request.getSession().getAttribute("auth");
     if (auth != null) {
         response.sendRedirect("index.jsp");
     }
@@ -32,17 +32,19 @@
                 <div class="col-md-7">
                     <h3>Login to <strong>Shopping Mall</strong></h3>
                     <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-                    <form action="#" method="post">
+                    <form action="login-account" method="POST">
                         <div class="form-group first">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                            <label for="username">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" placeholder="Kullanıcı adınız" name="accountName"
+                                   id="username">
                         </div>
                         <div class="form-group last mb-3">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" placeholder="Your Password" id="password">
+                            <label for="password">Parola</label>
+                            <input type="password" class="form-control" placeholder="Parolanız" name="accountPassword"
+                                   id="password">
                         </div>
 
-                        <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                        <input type="submit" value="Giriş Yap" class="btn btn-block btn-primary">
 
                     </form>
                 </div>

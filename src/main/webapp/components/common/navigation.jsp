@@ -21,8 +21,17 @@
             <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
         <div class="navbar-nav ml-auto py-0">
+            <%
+                if (auth == null) {
+            %>
             <a href="login.jsp" class="nav-item nav-link">Login</a>
-            <a href="" class="nav-item nav-link">Register</a>
+            <%
+            } else {
+            %>
+            Merhaba, <%= auth.getAccountName()%>!
+            <%
+                }
+            %>
         </div>
     </div>
 </nav>

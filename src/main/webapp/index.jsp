@@ -1,4 +1,16 @@
+<%@ page import="com.ibtech.mall.database.entity.Account" %>
+<%@ page import="com.ibtech.mall.database.connection.DbCon" %>
+<%@ page import="com.ibtech.mall.database.entity.Product" %>
+<%@ page import="com.ibtech.mall.database.entity.Cart" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    Account auth = (Account) request.getSession().getAttribute("auth");
+    if (auth != null) {
+        request.setAttribute("person", auth);
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +18,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    <%@include file="components/common/common_js_css.jsp"%>
+    <%@include file="components/common/common_js_css.jsp" %>
 </head>
 <body>
 <!-- Topbar Start -->
-<%@include file="components/common/topbar.jsp"%>
+<%@include file="components/common/topbar.jsp" %>
 <!-- Topbar End -->
 
 
@@ -23,11 +35,11 @@
                 <h6 class="m-0">Kategoriler</h6>
                 <i class="fa fa-angle-down text-dark"></i>
             </a>
-            <%@include file="components/home/nav_category.jsp"%>
+            <%@include file="components/home/nav_category.jsp" %>
         </div>
         <div class="col-lg-9">
-            <%@include file="components/common/navigation.jsp"%>
-            <%@include file="components/home/slider.jsp"%>
+            <%@include file="components/common/navigation.jsp" %>
+            <%@include file="components/home/slider.jsp" %>
         </div>
     </div>
 </div>
@@ -71,7 +83,7 @@
 
 
 <!-- Footer Start -->
-<%@include file="components/common/footer.jsp"%>
+<%@include file="components/common/footer.jsp" %>
 <!-- Footer End -->
 
 
