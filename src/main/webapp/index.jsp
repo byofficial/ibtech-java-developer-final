@@ -59,6 +59,7 @@
 
 
 <!-- Trendy Products Start -->
+<%@include file="components/home/trendy_products.jsp" %>
 
 <!-- Trendy Products End -->
 
