@@ -18,11 +18,11 @@ public class AccountXml {
         return document;
     }
 
-    public static Document format(List<Account> products) throws ParserConfigurationException {
+    public static Document format(List<Account> accounts) throws ParserConfigurationException {
         Document document = XmlHelper.create("accounts");
         Element elementList = document.getDocumentElement();
 
-        for (Account account : products) {
+        for (Account account : accounts) {
             Element element = document.createElement("account");
             formatDocumentElement(document, account, element);
             elementList.appendChild(element);
