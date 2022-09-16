@@ -8,8 +8,8 @@ public class Cart extends Product implements IEntity {
 
     }
 
-    public Cart(long cartId, long productId, String getProductName, String imagePath, double salesPrice, long quantity) {
-        super(productId, getProductName, imagePath, salesPrice);
+    public Cart(long cartId, long productId, String productName, String imagePath, double salesPrice, long quantity, String description, String longDescription) {
+        super(productId, productName, imagePath, salesPrice, description, longDescription);
         this.cartId = cartId;
         this.quantity = quantity;
     }

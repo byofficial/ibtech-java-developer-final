@@ -13,12 +13,14 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         int affected = 0;
         try {
             connect();
-            String sql = "INSERT INTO Product(productName, imagePath, salesPrice, categoryId) values(?, ?, ?, ?)";
+            String sql = "INSERT INTO Product(productName, imagePath, salesPrice, categoryId, description, longDescription) values(?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, product.getProductName());
             statement.setString(2, product.getImagePath());
             statement.setDouble(3, product.getSalesPrice());
             statement.setLong(4, product.getCategoryId());
+            statement.setString(5, product.getDescription());
+            statement.setString(6, product.getLongDescription());
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -32,13 +34,15 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         int affected = 0;
         try {
             connect();
-            String sql = "UPDATE Product set productName = ?, imagePath=?,salesPrice = ?, categoryId=? WHERE productId = ?";
+            String sql = "UPDATE Product set productName = ?, imagePath=?,salesPrice = ?, categoryId=?, description=?, longDescription=? WHERE productId = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, product.getProductName());
             statement.setString(2, product.getImagePath());
             statement.setDouble(3, product.getSalesPrice());
             statement.setLong(4, product.getCategoryId());
-            statement.setLong(5, id);
+            statement.setString(5, product.getDescription());
+            statement.setString(6, product.getLongDescription());
+            statement.setLong(7, id);
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -124,7 +128,9 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         String imagePath = resultSet.getString("imagePath");
         double salesPrice = resultSet.getDouble("salesPrice");
         long categoryId = resultSet.getLong("categoryId");
-        Product product = new Product(productId, productName, imagePath, salesPrice);
+        String description = resultSet.getString("description");
+        String longDescription = resultSet.getString("longDescription");
+        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
         product.setCategoryId(categoryId);
         return product;
     }

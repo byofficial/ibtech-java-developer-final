@@ -40,7 +40,9 @@ public class ProductXml {
         String imagePath = XmlHelper.getSingleElementText(element, "imagePath", "");
         double salesPrice = XmlHelper.getSingleElementText(element, "salesPrice", 0.0);
         long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
-        Product product = new Product(productId, productName, imagePath, salesPrice);
+        String description = XmlHelper.getSingleElementText(element, "description", "");
+        String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
+        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
         product.setCategoryId(categoryId);
         return product;
     }
@@ -56,7 +58,9 @@ public class ProductXml {
             String imagePath = XmlHelper.getSingleElementText(element, "imagePath", "");
             double salesPrice = XmlHelper.getSingleElementText(element, "salesPrice", 0.0);
             long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
-            Product product = new Product(productId, productName, imagePath, salesPrice);
+            String description = XmlHelper.getSingleElementText(element, "description", "");
+            String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
+            Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
             product.setCategoryId(categoryId);
             newList.add(product);
         }
@@ -69,5 +73,7 @@ public class ProductXml {
         XmlHelper.addSingleElementText(document, element, "imagePath", product.getImagePath());
         XmlHelper.addSingleElementText(document, element, "salesPrice", product.getSalesPrice());
         XmlHelper.addSingleElementText(document, element, "categoryId", product.getCategoryId());
+        XmlHelper.addSingleElementText(document, element, "description", product.getProductName());
+        XmlHelper.addSingleElementText(document, element, "longDescription", product.getProductName());
     }
 }

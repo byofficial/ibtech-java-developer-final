@@ -5,6 +5,7 @@
 <%@ page import="org.w3c.dom.Document" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ibtech.mall.core.WebHelper" %>
+<%@ page pageEncoding="UTF-8" %>
 <%
     String productListAddress = System.getenv("SITE_URL") + "api/products";
     InputStream productListIN = WebHelper.get(productListAddress);
@@ -36,7 +37,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="api/product?id=<%=product.getProductId()%>" class="btn btn-sm text-dark p-0"><i
+                    <a href="product.jsp?id=<%=product.getProductId()%>" class="btn btn-sm text-dark p-0"><i
                             class="fas fa-eye text-primary mr-1"></i>Ürünü İncele</a>
                     <a href="api/cart/create?id=<%=product.getProductId()%>" id="cart" class="btn btn-sm text-dark p-0"><i
                             class="fas fa-shopping-cart text-primary mr-1"></i>Sepete Ekle</a>

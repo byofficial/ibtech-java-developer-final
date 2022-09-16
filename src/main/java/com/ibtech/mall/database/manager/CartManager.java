@@ -83,11 +83,13 @@ public class CartManager extends BaseManager<Cart> {
     protected Cart parse(ResultSet resultSet) throws Exception {
         long cartId = resultSet.getLong("cartId");
         long productId = resultSet.getLong("productId");
-        String getProductName = resultSet.getString("getProductName");
+        String productName = resultSet.getString("getProductName");
         String imagePath = resultSet.getString("imagePath");
         double salesPrice = resultSet.getDouble("salesPrice");
+        String description = resultSet.getString("description");
+        String longDescription = resultSet.getString("longDescription");
         long quantity = resultSet.getLong("quantity");
-        return new Cart(cartId, productId, getProductName, imagePath, salesPrice, quantity);
+        return new Cart(cartId, productId, productName, imagePath, salesPrice, quantity, description, longDescription);
     }
 
 }

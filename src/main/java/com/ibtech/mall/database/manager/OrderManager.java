@@ -44,6 +44,8 @@ public class OrderManager extends BaseManager<Orders> {
                 orders.setOrderId(rs.getLong("orderId"));
                 orders.setProductId(productId);
                 orders.setProductName(product.getProductName());
+                orders.setDescription(product.getDescription());
+                orders.setLongDescription(product.getLongDescription());
                 orders.setCategoryId(product.getCategoryId());
                 orders.setSalesPrice(product.getSalesPrice() * rs.getLong("quantity"));
                 orders.setQuantity(rs.getLong("quantity"));

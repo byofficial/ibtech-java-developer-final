@@ -4,16 +4,20 @@ public class Product implements IEntity {
     private long productId;
     private String productName;
     private String imagePath;
+    private String description;
+    private String longDescription;
     private double salesPrice;
     private long categoryId;
 
     public Product() {
     }
 
-    public Product(long productId, String productName, String imagePath, double salesPrice) {
+    public Product(long productId, String productName, String imagePath, double salesPrice, String description, String longDescription) {
         this.productId = productId;
         this.productName = productName;
         this.imagePath = imagePath;
+        this.description = description;
+        this.longDescription = longDescription;
         this.salesPrice = salesPrice;
     }
 
@@ -55,5 +59,21 @@ public class Product implements IEntity {
 
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
     }
 }
