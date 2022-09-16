@@ -14,6 +14,7 @@
           <element id="module-output" name="ibtech-java-developer-final" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.cloudinary:cloudinary-core:1.33.0" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.5.0" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
           <element id="library" level="project" name="Maven: io.github.cdimascio:java-dotenv:5.0.0" />
