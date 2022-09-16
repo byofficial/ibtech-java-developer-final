@@ -4,16 +4,22 @@
 <%@ page import="com.ibtech.mall.xml.ProductXml" %>
 <%@ page import="java.io.InputStream" %>
 <%@ page import="org.w3c.dom.Document" %>
+<%@ page import="com.ibtech.mall.database.entity.Account" %>
+<%@ page import="com.ibtech.mall.database.manager.CategoryManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    CategoryManager productCategoryManager = new CategoryManager();
     String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
     String noPhoto = "https://res.cloudinary.com/ibtbcm/image/upload/v1663288077/product_picture/nophoto_ftkwas.jpg";
     long productId = Long.parseLong(request.getParameter("id"));
     String productDetailAddress = String.format(System.getenv("SITE_URL") + "api/product?id=%d", productId);
-    InputStream in = WebHelper.get(productDetailAddress);
-    Document document = XmlHelper.parse(in);
-    Product productDetail = ProductXml.parse(document);
-
+    InputStream productInputStream = WebHelper.get(productDetailAddress);
+    Document productDocument = XmlHelper.parse(productInputStream);
+    Product productDetail = ProductXml.parse(productDocument);
+    Account auth = (Account) request.getSession().getAttribute("auth");
+    if (auth != null) {
+        request.setAttribute("person", auth);
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +32,44 @@
 <!-- Topbar Start -->
 <%@include file="components/common/topbar.jsp" %>
 <!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+            <h6 class="m-0">Kategoriler</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <%@include file="components/product/nav_category.jsp" %>
+        </div>
+        <div class="col-lg-9">
+            <%@include file="components/common/navigation.jsp" %>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar End -->
+
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Ürün Detayı</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="/">Ana Sayfa</a></p>
+            <p class="m-0 px-2">/</p>
+            <p class="m-0 px-2"><%=productCategoryManager.findById(productDetail.getCategoryId()).getCategoryName() %>
+            </p>
+            <p class="m-0 px-2">/</p>
+            <p class="m-0"><%=productDetail.getProductName() %>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
 
 <!-- Shop Detail Start -->
 <div class="container-fluid py-5">
