@@ -1,12 +1,15 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Product;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
 public class ProductManager extends BaseManager<Product> implements ICrudRepo<Product> {
+    private static Logger logger = LoggerFactory.getLogger(ProductManager.class);
 
     @Override
     public boolean save(Product product) {
@@ -24,8 +27,9 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Product created in database! Affected: " + affected);
         return affected > 0;
     }
 
@@ -46,8 +50,9 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Product updated in database! Affected: " + affected);
         return affected > 0;
     }
 
@@ -62,9 +67,9 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             productList = parseList(rs);
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
-
+        logger.info("All Products listed successfully!");
         return productList;
 
     }
@@ -83,7 +88,13 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             }
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
+
+        if (product != null) {
+            logger.info("Product found successfully! Category id: " + product.getProductId());
+        } else {
+            logger.info("Product was not found!");
         }
 
         return product;
@@ -100,8 +111,10 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             productList = parseList(rs);
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+
+        logger.info("Products in this category have been successfully listed!");
         return productList;
     }
 
@@ -116,8 +129,10 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+
+        logger.info("Category successfully deleted!");
         return affected > 0;
     }
 

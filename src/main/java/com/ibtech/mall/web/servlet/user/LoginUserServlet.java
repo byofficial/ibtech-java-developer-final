@@ -3,6 +3,8 @@ package com.ibtech.mall.web.servlet.user;
 import com.ibtech.mall.database.entity.Account;
 import com.ibtech.mall.database.manager.AccountManager;
 import com.ibtech.mall.xml.AccountXml;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +17,8 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginUserServlet", value = "/login-account")
 public class LoginUserServlet extends HttpServlet {
+    private static Logger logger = LoggerFactory.getLogger(LoginUserServlet.class);
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -27,14 +31,16 @@ public class LoginUserServlet extends HttpServlet {
 
             if (account == null) {
                 response.sendError(404);
+                logger.info("Account not found");
             } else {
                 Document document = AccountXml.format(account);
                 request.getSession().setAttribute("auth", account);
                 RequestDispatcher dd = request.getRequestDispatcher("error.jsp");
+                logger.info("Signed in. Redirecting to home page!");
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.ibtech.mall.web.servlet.cart;
 
 import com.ibtech.mall.database.entity.Cart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 
 @WebServlet(name = "QuantityIncDecCartServlet", value = "/api/cart/qty")
 public class QuantityIncDecCartServlet extends HttpServlet {
+    private static Logger logger = LoggerFactory.getLogger(QuantityIncDecCartServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -27,6 +31,7 @@ public class QuantityIncDecCartServlet extends HttpServlet {
                             long quantity = cart.getQuantity();
                             quantity++;
                             cart.setQuantity(quantity);
+                            logger.info("Product increased. Redirecting to cart page!");
                             response.sendRedirect("/cart.jsp");
                         }
                     }
@@ -41,13 +46,15 @@ public class QuantityIncDecCartServlet extends HttpServlet {
                             break;
                         }
                     }
+                    logger.info("Product decrement. Redirecting to cart page!");
                     response.sendRedirect("/cart.jsp");
                 }
             } else {
+                logger.info("Wrong action or request. Redirecting to cart page!");
                 response.sendRedirect("/cart.jsp");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 

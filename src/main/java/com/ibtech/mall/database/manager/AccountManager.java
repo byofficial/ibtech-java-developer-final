@@ -1,12 +1,16 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Account;
+import com.ibtech.mall.web.servlet.user.LoginUserServlet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountManager extends BaseManager<Account> {
+    private static Logger logger = LoggerFactory.getLogger(AccountManager.class);
 
     public Account login(String accountName, String accountPassword) {
         Account account = null;
@@ -21,11 +25,17 @@ public class AccountManager extends BaseManager<Account> {
                 account = parse(resultSet);
             }
             disconnect();
+            if (account != null) {
+                logger.info("Account login was successful! Accound ID: " + account.getAccountId());
+            } else {
+                logger.info("Account login failed! Account Name: " + accountName);
+            }
 
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            logger.error("SQL error. " + e.getMessage());
+
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            logger.error("Login error. " + e.getMessage());
         }
         return account;
     }

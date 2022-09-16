@@ -1,6 +1,8 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Cart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartManager extends BaseManager<Cart> {
+    private static Logger logger = LoggerFactory.getLogger(CartManager.class);
+
     public List<Cart> getCartAllProducts(ArrayList<Cart> cartList) {
         List<Cart> carts = new ArrayList<>();
         try {
@@ -30,10 +34,12 @@ public class CartManager extends BaseManager<Cart> {
                         carts.add(cart);
                     }
                 }
+            } else {
+                logger.info("There are no products in the cart");
             }
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return carts;
     }
@@ -52,10 +58,12 @@ public class CartManager extends BaseManager<Cart> {
                         sum += rs.getDouble("salesPrice") * cartItem.getQuantity();
                     }
                 }
+            } else {
+                logger.info("Total price = 0, There are no products in the cart!");
             }
             disconnect();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return sum;
     }
@@ -74,8 +82,9 @@ public class CartManager extends BaseManager<Cart> {
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Cart created in database! Affected: " + affected);
         return affected > 0;
     }
 

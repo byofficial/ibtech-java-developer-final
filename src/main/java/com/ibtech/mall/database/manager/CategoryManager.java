@@ -1,12 +1,15 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
 public class CategoryManager extends BaseManager<Category> implements ICrudRepo<Category> {
+    private static Logger logger = LoggerFactory.getLogger(CategoryManager.class);
 
     @Override
     public boolean save(Category category) {
@@ -19,8 +22,9 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Category created in database! Affected: " + affected);
         return affected > 0;
     }
 
@@ -36,8 +40,9 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Category updated in database! Affected: " + affected);
         return affected > 0;
     }
 
@@ -52,9 +57,10 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
             categoryList = parseList(rs);
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
+        logger.info("Category listed success!");
         return categoryList;
 
     }
@@ -73,7 +79,13 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
             }
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
+
+        if (category != null) {
+            logger.info("Category found successfully! Category id: " + category.getCategoryId());
+        } else {
+            logger.info("Category was not found!");
         }
 
         return category;
@@ -90,8 +102,9 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
+        logger.info("Category successfully deleted!");
         return affected > 0;
     }
 

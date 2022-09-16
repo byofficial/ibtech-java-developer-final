@@ -4,6 +4,8 @@ import com.ibtech.mall.core.XmlHelper;
 import com.ibtech.mall.database.entity.Category;
 import com.ibtech.mall.database.manager.CategoryManager;
 import com.ibtech.mall.xml.CategoryXml;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import javax.servlet.ServletException;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @WebServlet(name = "CategoryListServlet", value = "/api/categories")
 public class CategoryListServlet extends HttpServlet {
+    private static Logger logger = LoggerFactory.getLogger(CategoryListServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -27,8 +31,9 @@ public class CategoryListServlet extends HttpServlet {
             response.setContentType("application/xml;charset=UTF-8");
 
             XmlHelper.dump(document, response.getOutputStream());
+            logger.info("Category listing request received");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
