@@ -2,6 +2,7 @@ package com.ibtech.mall.xml;
 
 import com.ibtech.mall.core.XmlHelper;
 import com.ibtech.mall.database.entity.Category;
+import com.ibtech.mall.database.entity.enums.FeaturedCategory;
 import com.ibtech.mall.database.entity.enums.Status;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,6 +19,7 @@ public class CategoryXml {
         XmlHelper.addSingleElementText(document, element, "categoryId", category.getCategoryId());
         XmlHelper.addSingleElementText(document, element, "categoryName", category.getCategoryName());
         XmlHelper.addSingleElementText(document, element, "status", category.getStatus());
+        XmlHelper.addSingleElementText(document, element, "featuredCategory", category.getFeaturedCategory());
         return document;
     }
 
@@ -30,6 +32,7 @@ public class CategoryXml {
             XmlHelper.addSingleElementText(document, element, "categoryId", category.getCategoryId());
             XmlHelper.addSingleElementText(document, element, "categoryName", category.getCategoryName());
             XmlHelper.addSingleElementText(document, element, "status", category.getStatus());
+            XmlHelper.addSingleElementText(document, element, "featuredCategory", category.getFeaturedCategory());
             elementList.appendChild(element);
         }
 
@@ -42,7 +45,8 @@ public class CategoryXml {
         long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
         String categoryName = XmlHelper.getSingleElementText(element, "categoryName", "");
         long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
-        return new Category(categoryId, categoryName, Status.fromInteger(status));
+        long featuredCategory = XmlHelper.getSingleElementText(element, "featuredCategory", FeaturedCategory.ACTIVE);
+        return new Category(categoryId, categoryName, Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory));
     }
 
     public static List<Category> parseList(Document document) {
@@ -54,7 +58,8 @@ public class CategoryXml {
             long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
             String categoryName = XmlHelper.getSingleElementText(element, "categoryName", "");
             long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
-            newCategoryList.add(new Category(categoryId, categoryName, Status.fromInteger(status)));
+            long featuredCategory = XmlHelper.getSingleElementText(element, "featuredCategory", FeaturedCategory.ACTIVE);
+            newCategoryList.add(new Category(categoryId, categoryName, Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory)));
         }
         return newCategoryList;
     }

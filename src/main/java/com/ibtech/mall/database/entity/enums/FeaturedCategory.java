@@ -14,4 +14,24 @@ public enum FeaturedCategory {
         }
         return null;
     }
+
+    public static long parseLong(FeaturedCategory x) {
+        switch (x) {
+            case ACTIVE:
+                return 0;
+            case PASSIVE:
+                return 1;
+        }
+        return -1;
+    }
+
+    public static String toString(FeaturedCategory x) {
+        switch (x) {
+            case ACTIVE:
+                return "0";
+            case PASSIVE:
+                return "1";
+        }
+        return "-1";
+    }
 }
