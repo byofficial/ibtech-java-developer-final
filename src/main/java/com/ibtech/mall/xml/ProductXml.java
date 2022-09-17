@@ -3,6 +3,7 @@ package com.ibtech.mall.xml;
 import com.ibtech.mall.core.XmlHelper;
 import com.ibtech.mall.database.entity.Product;
 import com.ibtech.mall.database.entity.enums.Status;
+import com.ibtech.mall.database.entity.enums.TrendyProduct;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -44,7 +45,9 @@ public class ProductXml {
         String description = XmlHelper.getSingleElementText(element, "description", "");
         String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
         long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
-        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription, Status.fromInteger(status));
+        long trendyProduct = XmlHelper.getSingleElementText(element, "trendyProduct", TrendyProduct.ACTIVE);
+        Product product = new Product(productId, productName, imagePath,
+                salesPrice, description, longDescription, Status.fromInteger(status), TrendyProduct.fromInteger(trendyProduct));
         product.setCategoryId(categoryId);
         return product;
     }
@@ -63,7 +66,9 @@ public class ProductXml {
             String description = XmlHelper.getSingleElementText(element, "description", "");
             String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
             long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
-            Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription, Status.fromInteger(status));
+            long trendyProduct = XmlHelper.getSingleElementText(element, "trendyProduct", TrendyProduct.ACTIVE);
+            Product product = new Product(productId, productName, imagePath,
+                    salesPrice, description, longDescription, Status.fromInteger(status), TrendyProduct.fromInteger(trendyProduct));
             product.setCategoryId(categoryId);
             newList.add(product);
         }
@@ -79,5 +84,6 @@ public class ProductXml {
         XmlHelper.addSingleElementText(document, element, "description", product.getProductName());
         XmlHelper.addSingleElementText(document, element, "longDescription", product.getProductName());
         XmlHelper.addSingleElementText(document, element, "status", product.getStatus());
+        XmlHelper.addSingleElementText(document, element, "trendyProduct", product.getTrendyProduct());
     }
 }

@@ -1,6 +1,7 @@
 package com.ibtech.mall.database.entity;
 
 import com.ibtech.mall.database.entity.enums.Status;
+import com.ibtech.mall.database.entity.enums.TrendyProduct;
 
 public class Product implements IEntity {
     private long productId;
@@ -11,6 +12,8 @@ public class Product implements IEntity {
     private double salesPrice;
     private long categoryId;
     private Status status;
+
+    private TrendyProduct trendyProduct;
 
     public Product() {
     }
@@ -32,6 +35,17 @@ public class Product implements IEntity {
         this.longDescription = longDescription;
         this.salesPrice = salesPrice;
         this.status = status;
+    }
+
+    public Product(long productId, String productName, String imagePath, double salesPrice, String description, String longDescription, Status status, TrendyProduct trendyProduct) {
+        this.productId = productId;
+        this.productName = productName;
+        this.imagePath = imagePath;
+        this.description = description;
+        this.longDescription = longDescription;
+        this.salesPrice = salesPrice;
+        this.status = status;
+        this.trendyProduct = trendyProduct;
     }
 
     public long getProductId() {
@@ -96,5 +110,13 @@ public class Product implements IEntity {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public TrendyProduct getTrendyProduct() {
+        return trendyProduct;
+    }
+
+    public void setTrendyProduct(TrendyProduct trendyProduct) {
+        this.trendyProduct = trendyProduct;
     }
 }

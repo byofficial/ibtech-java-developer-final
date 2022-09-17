@@ -3,6 +3,7 @@ package com.ibtech.mall.core;
 
 import com.ibtech.mall.database.entity.enums.FeaturedCategory;
 import com.ibtech.mall.database.entity.enums.Status;
+import com.ibtech.mall.database.entity.enums.TrendyProduct;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -74,6 +75,11 @@ public class XmlHelper {
         return Long.parseLong(string);
     }
 
+    public static long getSingleElementText(Element parent, String tag, TrendyProduct defaultValue) {
+        String string = getSingleElementText(parent, tag, TrendyProduct.toString(defaultValue));
+        return Long.parseLong(string);
+    }
+
     public static String getAttribute(Element element, String name, String defaultValue) {
         if (!element.hasAttribute(name)) {
             return defaultValue;
@@ -116,6 +122,13 @@ public class XmlHelper {
         String string = FeaturedCategory.toString(content);
         addSingleElementText(document, parent, tag, string);
     }
+
+    public static void addSingleElementText(Document document,
+                                            Element parent, String tag, TrendyProduct content) {
+        String string = TrendyProduct.toString(content);
+        addSingleElementText(document, parent, tag, string);
+    }
+
     public static Document create(String root) throws ParserConfigurationException {
         DocumentBuilder builder = getFactory().newDocumentBuilder();
         Document document = builder.newDocument();

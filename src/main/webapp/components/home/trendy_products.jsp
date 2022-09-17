@@ -6,6 +6,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.ibtech.mall.core.WebHelper" %>
 <%@ page import="com.ibtech.mall.database.entity.enums.Status" %>
+<%@ page import="com.ibtech.mall.database.entity.enums.TrendyProduct" %>
 <%@ page pageEncoding="UTF-8" %>
 <%
     String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
@@ -22,7 +23,7 @@
     <div class="row px-xl-5 pb-3">
 
         <% for (Product product : trandyProductList) {
-            if (product.getStatus() == Status.ACTIVE) {
+            if (product.getStatus() == Status.ACTIVE && product.getTrendyProduct() == TrendyProduct.ACTIVE) {
         %>
 
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
