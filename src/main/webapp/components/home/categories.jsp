@@ -9,7 +9,7 @@
     Document documentFeaturedCategoryList = XmlHelper.parse(featuredCategoryListIN);
     List<Category> featuredCategoryList = CategoryXml.parseList(documentFeaturedCategoryList);
 %>
-<div class="container-fluid pt-5">
+<div id="featured-category" class="container-fluid pt-5">
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Seçilmiş Kategoriler</span></h2>
     </div>
