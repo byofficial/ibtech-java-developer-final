@@ -18,11 +18,12 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
         int affected = 0;
         try {
             connect();
-            String sql = "INSERT INTO Category(categoryName, status, featuredCategory) values(?, ?, ?)";
+            String sql = "INSERT INTO Category(categoryName, status, featuredCategory, categoryImage) values(?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, category.getCategoryName());
             statement.setInt(2, Integer.parseInt(category.getStatus().toString()));
             statement.setInt(3, Integer.parseInt(category.getFeaturedCategory().toString()));
+            statement.setString(4, category.getCategoryImage());
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -37,12 +38,13 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
         int affected = 0;
         try {
             connect();
-            String sql = "UPDATE Category set categoryName = ?, status = ?, featuredCategory=? WHERE categoryId = ?";
+            String sql = "UPDATE Category set categoryName = ?, status = ?, featuredCategory=? categoryImage=? WHERE categoryId = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, category.getCategoryName());
             statement.setInt(2, Integer.parseInt(category.getStatus().toString()));
             statement.setInt(3, Integer.parseInt(category.getFeaturedCategory().toString()));
-            statement.setLong(4, id);
+            statement.setString(4, category.getCategoryImage());
+            statement.setLong(5, id);
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -120,7 +122,8 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
         String categoryName = resultSet.getString("categoryName");
         Status status = Status.fromInteger(resultSet.getInt("status"));
         FeaturedCategory featuredCategory = FeaturedCategory.fromInteger(resultSet.getInt("featuredCategory"));
-        return new Category(categoryId, categoryName, status, featuredCategory);
+        String categoryImage = resultSet.getString("categoryImage");
+        return new Category(categoryId, categoryName, status, featuredCategory, categoryImage);
     }
 
 }

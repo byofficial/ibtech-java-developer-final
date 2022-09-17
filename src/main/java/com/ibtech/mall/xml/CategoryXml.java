@@ -20,6 +20,7 @@ public class CategoryXml {
         XmlHelper.addSingleElementText(document, element, "categoryName", category.getCategoryName());
         XmlHelper.addSingleElementText(document, element, "status", category.getStatus());
         XmlHelper.addSingleElementText(document, element, "featuredCategory", category.getFeaturedCategory());
+        XmlHelper.addSingleElementText(document, element, "categoryImage", category.getCategoryImage());
         return document;
     }
 
@@ -33,6 +34,7 @@ public class CategoryXml {
             XmlHelper.addSingleElementText(document, element, "categoryName", category.getCategoryName());
             XmlHelper.addSingleElementText(document, element, "status", category.getStatus());
             XmlHelper.addSingleElementText(document, element, "featuredCategory", category.getFeaturedCategory());
+            XmlHelper.addSingleElementText(document, element, "categoryImage", category.getCategoryImage());
             elementList.appendChild(element);
         }
 
@@ -46,7 +48,9 @@ public class CategoryXml {
         String categoryName = XmlHelper.getSingleElementText(element, "categoryName", "");
         long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
         long featuredCategory = XmlHelper.getSingleElementText(element, "featuredCategory", FeaturedCategory.ACTIVE);
-        return new Category(categoryId, categoryName, Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory));
+        String categoryImage = XmlHelper.getSingleElementText(element, "categoryImage", "");
+        return new Category(categoryId, categoryName,
+                Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory), categoryImage);
     }
 
     public static List<Category> parseList(Document document) {
@@ -59,7 +63,9 @@ public class CategoryXml {
             String categoryName = XmlHelper.getSingleElementText(element, "categoryName", "");
             long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
             long featuredCategory = XmlHelper.getSingleElementText(element, "featuredCategory", FeaturedCategory.ACTIVE);
-            newCategoryList.add(new Category(categoryId, categoryName, Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory)));
+            String categoryImage = XmlHelper.getSingleElementText(element, "categoryImage", "");
+            newCategoryList.add(new Category(categoryId, categoryName,
+                    Status.fromInteger(status), FeaturedCategory.fromInteger(featuredCategory), categoryImage));
         }
         return newCategoryList;
     }

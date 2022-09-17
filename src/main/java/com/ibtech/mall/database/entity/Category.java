@@ -8,6 +8,7 @@ public class Category implements IEntity {
     private String categoryName;
     private Status status;
     private FeaturedCategory featuredCategory;
+    private String categoryImage;
 
     public Category() {
     }
@@ -28,6 +29,14 @@ public class Category implements IEntity {
         this.categoryName = categoryName;
         this.status = status;
         this.featuredCategory = featuredCategory;
+    }
+
+    public Category(long categoryId, String categoryName, Status status, FeaturedCategory featuredCategory, String categoryImage) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.status = status;
+        this.featuredCategory = featuredCategory;
+        this.categoryImage = categoryImage;
     }
 
     public long getCategoryId() {
@@ -60,5 +69,13 @@ public class Category implements IEntity {
 
     public void setFeaturedCategory(FeaturedCategory featuredCategory) {
         this.featuredCategory = featuredCategory;
+    }
+
+    public String getCategoryImage() {
+        return categoryImage;
+    }
+
+    public void setCategoryImage(String categoryImage) {
+        this.categoryImage = categoryImage;
     }
 }
