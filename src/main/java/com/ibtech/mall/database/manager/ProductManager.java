@@ -1,6 +1,7 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Product;
+import com.ibtech.mall.database.entity.enums.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +17,7 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         int affected = 0;
         try {
             connect();
-            String sql = "INSERT INTO Product(productName, imagePath, salesPrice, categoryId, description, longDescription) values(?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Product(productName, imagePath, salesPrice, categoryId, description, longDescription, status) values(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, product.getProductName());
             statement.setString(2, product.getImagePath());
@@ -24,6 +25,7 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             statement.setLong(4, product.getCategoryId());
             statement.setString(5, product.getDescription());
             statement.setString(6, product.getLongDescription());
+            statement.setInt(7, Integer.parseInt(product.getStatus().toString()));
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -38,7 +40,7 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         int affected = 0;
         try {
             connect();
-            String sql = "UPDATE Product set productName = ?, imagePath=?,salesPrice = ?, categoryId=?, description=?, longDescription=? WHERE productId = ?";
+            String sql = "UPDATE Product set productName = ?, imagePath=?,salesPrice = ?, categoryId=?, description=?, longDescription=?, staus=? WHERE productId = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, product.getProductName());
             statement.setString(2, product.getImagePath());
@@ -46,7 +48,8 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
             statement.setLong(4, product.getCategoryId());
             statement.setString(5, product.getDescription());
             statement.setString(6, product.getLongDescription());
-            statement.setLong(7, id);
+            statement.setInt(7, Integer.parseInt(product.getStatus().toString()));
+            statement.setLong(8, id);
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -145,7 +148,8 @@ public class ProductManager extends BaseManager<Product> implements ICrudRepo<Pr
         long categoryId = resultSet.getLong("categoryId");
         String description = resultSet.getString("description");
         String longDescription = resultSet.getString("longDescription");
-        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
+        Status status = Status.fromInteger(resultSet.getInt("status"));
+        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription, status);
         product.setCategoryId(categoryId);
         return product;
     }

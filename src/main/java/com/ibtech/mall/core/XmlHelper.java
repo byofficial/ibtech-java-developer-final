@@ -1,6 +1,7 @@
 package com.ibtech.mall.core;
 
 
+import com.ibtech.mall.database.entity.enums.Status;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -62,6 +63,11 @@ public class XmlHelper {
         return Long.parseLong(string);
     }
 
+    public static long getSingleElementText(Element parent, String tag, Status defaultValue) {
+        String string = getSingleElementText(parent, tag, Status.toString(defaultValue));
+        return Long.parseLong(string);
+    }
+
     public static String getAttribute(Element element, String name, String defaultValue) {
         if (!element.hasAttribute(name)) {
             return defaultValue;
@@ -90,6 +96,12 @@ public class XmlHelper {
     public static void addSingleElementText(Document document,
                                             Element parent, String tag, long content) {
         String string = Long.toString(content);
+        addSingleElementText(document, parent, tag, string);
+    }
+
+    public static void addSingleElementText(Document document,
+                                            Element parent, String tag, Status content) {
+        String string = Status.toString(content);
         addSingleElementText(document, parent, tag, string);
     }
 

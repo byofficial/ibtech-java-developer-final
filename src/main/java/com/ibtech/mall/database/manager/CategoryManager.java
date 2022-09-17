@@ -1,6 +1,7 @@
 package com.ibtech.mall.database.manager;
 
 import com.ibtech.mall.database.entity.Category;
+import com.ibtech.mall.database.entity.enums.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,9 +17,10 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
         int affected = 0;
         try {
             connect();
-            String sql = "INSERT INTO Category(categoryName) values(?)";
+            String sql = "INSERT INTO Category(categoryName, status) values(?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, category.getCategoryName());
+            statement.setInt(2, Integer.parseInt(category.getStatus().toString()));
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -33,10 +35,11 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
         int affected = 0;
         try {
             connect();
-            String sql = "UPDATE Category set categoryName = ? WHERE categoryId = ?";
+            String sql = "UPDATE Category set categoryName = ?, status = ? WHERE categoryId = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, category.getCategoryName());
-            statement.setLong(2, id);
+            statement.setInt(2, Integer.parseInt(category.getStatus().toString()));
+            statement.setLong(3, id);
             affected = statement.executeUpdate();
             disconnect();
         } catch (Exception e) {
@@ -112,7 +115,8 @@ public class CategoryManager extends BaseManager<Category> implements ICrudRepo<
     protected Category parse(ResultSet resultSet) throws Exception {
         long categoryId = resultSet.getLong("categoryId");
         String categoryName = resultSet.getString("categoryName");
-        return new Category(categoryId, categoryName);
+        Status status = Status.fromInteger(resultSet.getInt("status"));
+        return new Category(categoryId, categoryName, status);
     }
 
 }

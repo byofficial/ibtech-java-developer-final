@@ -2,6 +2,7 @@ package com.ibtech.mall.xml;
 
 import com.ibtech.mall.core.XmlHelper;
 import com.ibtech.mall.database.entity.Account;
+import com.ibtech.mall.database.entity.enums.Status;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -39,8 +40,9 @@ public class AccountXml {
         String accountName = XmlHelper.getSingleElementText(element, "accountName", "");
         String accountPassword = XmlHelper.getSingleElementText(element, "accountPassword", "");
         String accountEmail = XmlHelper.getSingleElementText(element, "accountEmail", "");
+        long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
 
-        return new Account(accountId, accountName, accountPassword, accountEmail);
+        return new Account(accountId, accountName, accountPassword, accountEmail, Status.fromInteger(status));
     }
 
     public static List<Account> parseList(Document document) {
@@ -53,7 +55,8 @@ public class AccountXml {
             String accountName = XmlHelper.getSingleElementText(element, "accountName", "");
             String accountPassword = XmlHelper.getSingleElementText(element, "accountPassword", "");
             String accountEmail = XmlHelper.getSingleElementText(element, "accountEmail", "");
-            Account account = new Account(accountId, accountName, accountPassword, accountEmail);
+            long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
+            Account account = new Account(accountId, accountName, accountPassword, accountEmail, Status.fromInteger(status));
             newList.add(account);
         }
         return newList;
@@ -64,6 +67,7 @@ public class AccountXml {
         XmlHelper.addSingleElementText(document, element, "accountName", account.getAccountName());
         XmlHelper.addSingleElementText(document, element, "accountPassword", account.getAccountPassword());
         XmlHelper.addSingleElementText(document, element, "accountEmail", account.getAccountEmail());
+        XmlHelper.addSingleElementText(document, element, "status", account.getStatus());
 
     }
 }

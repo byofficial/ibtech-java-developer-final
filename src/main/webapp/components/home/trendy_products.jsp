@@ -5,6 +5,7 @@
 <%@ page import="org.w3c.dom.Document" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ibtech.mall.core.WebHelper" %>
+<%@ page import="com.ibtech.mall.database.entity.enums.Status" %>
 <%@ page pageEncoding="UTF-8" %>
 <%
     String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
@@ -20,7 +21,10 @@
     </div>
     <div class="row px-xl-5 pb-3">
 
-        <% for (Product product : trandyProductList) { %>
+        <% for (Product product : trandyProductList) {
+            if (product.getStatus() == Status.ACTIVE) {
+        %>
+
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -48,7 +52,8 @@
                 </div>
             </div>
         </div>
-        <% } %>
+        <% }
+        } %>
 
 
     </div>

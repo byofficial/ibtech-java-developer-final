@@ -15,11 +15,15 @@
             List<Category> categories = CategoryXml.parseList(document);
         %>
 
-        <%for (Category category : categories) { %>
+        <%
+            for (Category category : categories) {
+                if (category.getStatus() == Status.ACTIVE) {
+        %>
         <a href="category.jsp?id=<%=category.getCategoryId()%>"
            class="nav-item nav-link"><%=category.getCategoryName()%>
         </a>
-        <% }%>
+        <% }
+        }%>
 
     </div>
 </nav>

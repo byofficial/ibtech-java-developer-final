@@ -1,4 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
 <div class="container-fluid pt-5">
+  <div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Seçilmiş Kategoriler</span></h2>
+  </div>
   <div class="row px-xl-5 pb-3">
     <div class="col-lg-4 col-md-6 pb-1">
       <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">

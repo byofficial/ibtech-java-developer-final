@@ -1,12 +1,23 @@
 package com.ibtech.mall.database.entity;
 
+import com.ibtech.mall.database.entity.enums.Status;
+
 public class Account implements IEntity {
     private long accountId;
     private String accountName;
     private String accountPassword;
     private String accountEmail;
+    private Status status;
 
     public Account() {
+    }
+
+    public Account(long accountId, String accountName, String accountPassword, String accountEmail, Status status) {
+        this.accountId = accountId;
+        this.accountName = accountName;
+        this.accountPassword = accountPassword;
+        this.accountEmail = accountEmail;
+        this.status = status;
     }
 
     public Account(long accountId, String accountName, String accountPassword, String accountEmail) {
@@ -14,6 +25,7 @@ public class Account implements IEntity {
         this.accountName = accountName;
         this.accountPassword = accountPassword;
         this.accountEmail = accountEmail;
+
     }
 
     public long getAccountId() {
@@ -46,5 +58,9 @@ public class Account implements IEntity {
 
     public void setAccountEmail(String accountEmail) {
         this.accountEmail = accountEmail;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 }

@@ -2,6 +2,7 @@ package com.ibtech.mall.xml;
 
 import com.ibtech.mall.core.XmlHelper;
 import com.ibtech.mall.database.entity.Product;
+import com.ibtech.mall.database.entity.enums.Status;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -42,7 +43,8 @@ public class ProductXml {
         long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
         String description = XmlHelper.getSingleElementText(element, "description", "");
         String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
-        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
+        long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
+        Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription, Status.fromInteger(status));
         product.setCategoryId(categoryId);
         return product;
     }
@@ -60,7 +62,8 @@ public class ProductXml {
             long categoryId = XmlHelper.getSingleElementText(element, "categoryId", 0);
             String description = XmlHelper.getSingleElementText(element, "description", "");
             String longDescription = XmlHelper.getSingleElementText(element, "longDescription", "");
-            Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription);
+            long status = XmlHelper.getSingleElementText(element, "status", Status.ACTIVE);
+            Product product = new Product(productId, productName, imagePath, salesPrice, description, longDescription, Status.fromInteger(status));
             product.setCategoryId(categoryId);
             newList.add(product);
         }
@@ -75,5 +78,6 @@ public class ProductXml {
         XmlHelper.addSingleElementText(document, element, "categoryId", product.getCategoryId());
         XmlHelper.addSingleElementText(document, element, "description", product.getProductName());
         XmlHelper.addSingleElementText(document, element, "longDescription", product.getProductName());
+        XmlHelper.addSingleElementText(document, element, "status", product.getStatus());
     }
 }

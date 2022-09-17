@@ -1,3 +1,5 @@
+
+<img src="theme/img/vendor-1.jpg" alt="">
 <div class="container-fluid py-5">
   <div class="row px-xl-5">
     <div class="col">
