@@ -4,14 +4,16 @@ public class Account implements IEntity {
     private long accountId;
     private String accountName;
     private String accountPassword;
+    private String accountEmail;
 
     public Account() {
     }
 
-    public Account(long accountId, String accountName, String accountPassword) {
+    public Account(long accountId, String accountName, String accountPassword, String accountEmail) {
         this.accountId = accountId;
         this.accountName = accountName;
         this.accountPassword = accountPassword;
+        this.accountEmail = accountEmail;
     }
 
     public long getAccountId() {
@@ -36,5 +38,13 @@ public class Account implements IEntity {
 
     public void setAccountPassword(String accountPassword) {
         this.accountPassword = accountPassword;
+    }
+
+    public String getAccountEmail() {
+        return accountEmail;
+    }
+
+    public void setAccountEmail(String accountEmail) {
+        this.accountEmail = accountEmail;
     }
 }

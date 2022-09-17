@@ -38,8 +38,9 @@ public class AccountXml {
         long accountId = XmlHelper.getSingleElementText(element, "accountId", 0);
         String accountName = XmlHelper.getSingleElementText(element, "accountName", "");
         String accountPassword = XmlHelper.getSingleElementText(element, "accountPassword", "");
+        String accountEmail = XmlHelper.getSingleElementText(element, "accountEmail", "");
 
-        return new Account(accountId, accountName, accountPassword);
+        return new Account(accountId, accountName, accountPassword, accountEmail);
     }
 
     public static List<Account> parseList(Document document) {
@@ -51,7 +52,8 @@ public class AccountXml {
             long accountId = XmlHelper.getSingleElementText(element, "accountId", 0);
             String accountName = XmlHelper.getSingleElementText(element, "accountName", "");
             String accountPassword = XmlHelper.getSingleElementText(element, "accountPassword", "");
-            Account account = new Account(accountId, accountName, accountPassword);
+            String accountEmail = XmlHelper.getSingleElementText(element, "accountEmail", "");
+            Account account = new Account(accountId, accountName, accountPassword, accountEmail);
             newList.add(account);
         }
         return newList;
@@ -61,6 +63,7 @@ public class AccountXml {
         XmlHelper.addSingleElementText(document, element, "accountId", account.getAccountId());
         XmlHelper.addSingleElementText(document, element, "accountName", account.getAccountName());
         XmlHelper.addSingleElementText(document, element, "accountPassword", account.getAccountPassword());
+        XmlHelper.addSingleElementText(document, element, "accountEmail", account.getAccountEmail());
 
     }
 }
