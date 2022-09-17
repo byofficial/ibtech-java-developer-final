@@ -33,7 +33,7 @@ public class LoginUserServlet extends HttpServlet {
                 response.sendError(404);
                 logger.info("Account not found");
             } else {
-                Document document = AccountXml.format(account);
+              //  Document document = AccountXml.format(account);
                 request.getSession().setAttribute("auth", account);
                 RequestDispatcher dd = request.getRequestDispatcher("error.jsp");
                 logger.info("Signed in. Redirecting to home page!");

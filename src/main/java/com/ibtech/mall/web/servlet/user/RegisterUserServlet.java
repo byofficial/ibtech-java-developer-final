@@ -38,7 +38,7 @@ public class RegisterUserServlet extends HttpServlet {
                 response.sendRedirect("register.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
             } else {
                 userManager.save(newAccount);
-                Document document = AccountXml.format(newAccount);
+               // Document document = AccountXml.format(newAccount);
                 request.getSession().setAttribute("auth", newAccount);
                 RequestDispatcher dd = request.getRequestDispatcher("error.jsp");
                 logger.info("Registered in. Redirecting to home page!");

@@ -47,7 +47,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-6 text-left">
-            <p class="text-dark text-center">Ibtech The Shopping Mall Hoşgeldiniz!</p>
+            <p class="text-dark text-center" style="margin-top: revert !important;">The Shopping Mall!</p>
         </div>
         <div class="col-lg-3 col-6 text-right">
             <a href="" class="btn border">

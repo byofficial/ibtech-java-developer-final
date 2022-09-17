@@ -34,6 +34,41 @@
 <!-- Topbar Start -->
 <%@include file="components/common/topbar.jsp" %>
 <!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+               data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Kategoriler</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <%@include file="components/order/nav_category.jsp" %>
+        </div>
+        <div class="col-lg-9">
+            <%@include file="components/common/navigation.jsp" %>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar End -->
+
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Siparişlerim</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="/">Ana Sayfa</a></p>
+            <p class="m-0 px-2">/</p>
+            <p class="m-0 px-2">Siparişlerim</p>
+
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
 <div class="container">
     <div class="card-header my-3">Tüm Siparişler</div>
     <table class="table table-striped">

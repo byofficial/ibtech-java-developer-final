@@ -1,6 +1,7 @@
 <%@ page import="com.ibtech.mall.database.entity.Menu" %>
 <%@ page import="com.ibtech.mall.database.manager.MenuManager" %>
 <%@ page import="com.ibtech.mall.xml.MenuXml" %>
+<%@ page import="com.ibtech.mall.database.entity.enums.Status" %>
 <%@ page pageEncoding="UTF-8" %>
 <%
     String menuAddress = String.format(System.getenv("SITE_URL") + "api/menus");
@@ -34,7 +35,7 @@
             <%
             } else {
             %>
-            <li class="nav-item">Merhaba, <strong><%= auth.getAccountName()%>!</strong></li>
+            <li class="nav-item align-self-center">Merhaba, <strong><%= auth.getAccountName()%>!</strong></li>
             <li class="nav-item"><a class="nav-link" href="logout">Çıkış Yap</a></li>
             <%
                 }
