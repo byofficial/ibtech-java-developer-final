@@ -5,7 +5,6 @@
 <%@ page import="com.ibtech.mall.database.manager.CategoryManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
     String noPhoto = "https://res.cloudinary.com/ibtbcm/image/upload/v1663288077/product_picture/nophoto_ftkwas.jpg";
     CategoryManager categoryManager = new CategoryManager();
     DecimalFormat dcf = new DecimalFormat("#.##");
@@ -58,7 +57,7 @@
                     %>
                     <tr>
                         <td class="align-middle"><img src="<%=!cartItem.getImagePath().equals("")
-                        ? productURL + cartItem.getImagePath() : noPhoto%> " alt=""
+                        ? cartItem.getImagePath() : noPhoto%> " alt=""
                                                       style="width: 50px;"> <%=cartItem.getProductName()%>
                         </td>
                         <td class="align-middle"><%=categoryManager.findById(cartItem.getCategoryId()).getCategoryName()%>

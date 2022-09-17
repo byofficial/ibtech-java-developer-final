@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     CategoryManager productCategoryManager = new CategoryManager();
-    String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
+
     String noPhoto = "https://res.cloudinary.com/ibtbcm/image/upload/v1663288077/product_picture/nophoto_ftkwas.jpg";
     long productId = Long.parseLong(request.getParameter("id"));
     String productDetailAddress = String.format(System.getenv("SITE_URL") + "api/product?id=%d", productId);
@@ -81,7 +81,7 @@
                 <div class="carousel-inner border">
                     <div class="carousel-item active">
                         <img class="w-100 h-100" src="<%= !productDetail.getImagePath().equals("")
-                        ? productURL + productDetail.getImagePath() : noPhoto %>" alt="Image">
+                        ? productDetail.getImagePath() : noPhoto %>" alt="Image">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">

@@ -7,7 +7,7 @@
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">%20 seçili kategori indirimi</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Bahar Koleksiyonu</h1>
-                    <a href="category.jsp?id=3" class="btn btn-outline-primary py-md-2 px-md-3">Alışverişe Başla</a>
+                    <a href="category.jsp?id=11" class="btn btn-outline-primary py-md-2 px-md-3">Alışverişe Başla</a>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">%20 seçili kategori indirimi</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Kış Koleksiyonu</h1>
-                    <a href="category.jsp?id=4" class="btn btn-outline-primary py-md-2 px-md-3">Alışverişe Başla</a>
+                    <a href="category.jsp?id=12" class="btn btn-outline-primary py-md-2 px-md-3">Alışverişe Başla</a>
                 </div>
             </div>
         </div>

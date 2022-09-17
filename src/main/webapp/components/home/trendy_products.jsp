@@ -9,7 +9,7 @@
 <%@ page import="com.ibtech.mall.database.entity.enums.TrendyProduct" %>
 <%@ page pageEncoding="UTF-8" %>
 <%
-    String productURL = "https://res.cloudinary.com/ibtbcm/image/upload/v1663287587/product_picture/";
+
     String noPhoto = "https://res.cloudinary.com/ibtbcm/image/upload/v1663288077/product_picture/nophoto_ftkwas.jpg";
     String productListAddress = System.getenv("SITE_URL") + "api/products";
     InputStream productListIN = WebHelper.get(productListAddress);
@@ -30,7 +30,7 @@
             <div class="card product-item border-0 mb-4">
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                     <a href="product.jsp?id=<%=product.getProductId()%>"> <img class="img-fluid w-100" src="<%=!product.getImagePath().equals("")
-                    ? productURL + product.getImagePath() : noPhoto%>" alt=""></a>
+                    ?  product.getImagePath() : noPhoto%>" alt=""></a>
                 </div>
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                     <a href="product.jsp?id=<%=product.getProductId()%>"><h6
