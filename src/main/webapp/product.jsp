@@ -38,8 +38,9 @@
 <div class="container-fluid">
     <div class="row border-top px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
-            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-            <h6 class="m-0">Kategoriler</h6>
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+               data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Kategoriler</h6>
                 <i class="fa fa-angle-down text-dark"></i>
             </a>
             <%@include file="components/product/nav_category.jsp" %>
@@ -60,8 +61,9 @@
         <div class="d-inline-flex">
             <p class="m-0"><a href="/">Ana Sayfa</a></p>
             <p class="m-0 px-2">/</p>
-            <p class="m-0 px-2"><%=productCategoryManager.findById(productDetail.getCategoryId()).getCategoryName() %>
-            </p>
+            <p class="m-0 px-2"><a
+                    href="category.jsp?id=<%=productDetail.getCategoryId()%>"><%=productCategoryManager.findById(productDetail.getCategoryId()).getCategoryName() %>
+            </a></p>
             <p class="m-0 px-2">/</p>
             <p class="m-0"><%=productDetail.getProductName() %>
             </p>

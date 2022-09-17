@@ -16,7 +16,8 @@
         %>
 
         <%for (Category category : categories) { %>
-        <a href="" class="nav-item nav-link"><%=category.getCategoryName()%>
+        <a href="category.jsp?id=<%=category.getCategoryId()%>"
+           class="nav-item nav-link"><%=category.getCategoryName()%>
         </a>
         <% }%>
 
