@@ -365,78 +365,78 @@ Projede ayrıntılı log çalışmaları yapılmıştır. Loglama için slf4j pa
 Örnek ekran görüntüleri
 </p>
 
-<p align="center">
 Ana sayfa web
+<p align="center">
   <img src="docs/image/img/1.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Seçilmiş Kategoriler
+<p align="center">
   <img src="docs/image/img/2.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Trend Ürünler
+<p align="center">
   <img src="docs/image/img/3.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Footer
+<p align="center">
   <img src="docs/image/img/4.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Belirli Bir Kategorideki Ürünler
+<p align="center">
   <img src="docs/image/img/5.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Belirli Bir Ürünün Detayı
+<p align="center">
   <img src="docs/image/img/6.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Belirli Bir Ürünün Detayı-2
+<p align="center">
   <img src="docs/image/img/7.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Belirli Bir Ürünün Detayı-3
+<p align="center">
   <img src="docs/image/img/8.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Giriş Yap
+<p align="center">
   <img src="docs/image/img/9.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Kayıt Ol
+<p align="center">
   <img src="docs/image/img/10.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Giriş yapan ve Sepetine Ürün Ekleyen Kullanıcı
+<p align="center">
   <img src="docs/image/img/11.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Sepet Sayfası
+<p align="center">
   <img src="docs/image/img/12.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Siparişlerim Sayfası
+<p align="center">
   <img src="docs/image/img/13.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Ana Sayfa Mobil Görünüm
+<p align="center">
   <img src="docs/image/img/14.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
-<p align="center">
 Ana Sayfa Mobil Görünüm-2
+<p align="center">
   <img src="docs/image/img/15.png" alt="Table 3 and 4" width="75%" height="75%">
 </p><br/>
 
