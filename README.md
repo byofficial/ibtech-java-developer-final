@@ -322,7 +322,7 @@ Postman Koleksiyonu İndir</a></b>
 </p>
 Örnek Kolaksiyon Görünümü:
 <p align="center"> 
-  <img src="docs/image/postman.PNG" alt="HAR Logo" width="80px" height="80px">
+  <img src="docs/image/postman.PNG" alt="HAR Logo" width="75%" height="75%">
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
