@@ -1,11 +1,10 @@
 package com.ibtech.mall.web.servlet.user;
 
+import com.ibtech.mall.core.EmailHelper;
 import com.ibtech.mall.database.entity.Account;
 import com.ibtech.mall.database.manager.AccountManager;
-import com.ibtech.mall.xml.AccountXml;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,11 +37,11 @@ public class RegisterUserServlet extends HttpServlet {
                 response.sendRedirect("register.jsp?message=" + URLEncoder.encode(message, "UTF-8"));
             } else {
                 userManager.save(newAccount);
-               // Document document = AccountXml.format(newAccount);
+                // Document document = AccountXml.format(newAccount);
                 request.getSession().setAttribute("auth", newAccount);
                 RequestDispatcher dd = request.getRequestDispatcher("error.jsp");
                 logger.info("Registered in. Redirecting to home page!");
-                //EmailHelper.sendEmail(accountEmail,"Hoşgeldiniz!","welcome.html");
+                EmailHelper.sendEmail(accountEmail, "Hoşgeldiniz!", "welcome.html");
                 response.sendRedirect("index.jsp");
             }
         } catch (Exception e) {

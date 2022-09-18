@@ -40,8 +40,7 @@ public class EmailHelper {
                 });
         StringBuilder contentBuilder = new StringBuilder();
         try {
-            File pfad = new File("");
-            BufferedReader in = new BufferedReader(new FileReader(pfad.getAbsolutePath() + "\\src\\main\\java\\com\\ibtech\\mall\\core\\template\\" + mailTemplate));
+            BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir")+ "\\src\\main\\java\\com\\ibtech\\mall\\core\\template\\" + mailTemplate));
             String str;
             while ((str = in.readLine()) != null) {
                 contentBuilder.append(str);
