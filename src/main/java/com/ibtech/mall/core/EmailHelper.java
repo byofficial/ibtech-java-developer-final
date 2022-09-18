@@ -11,7 +11,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -40,7 +39,8 @@ public class EmailHelper {
                 });
         StringBuilder contentBuilder = new StringBuilder();
         try {
-            BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir")+ "/src/main/java/com/ibtech/mall/core/template/" + mailTemplate));
+
+            BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/src/main/java/com/ibtech/mall/core/template/" + mailTemplate));
             String str;
             while ((str = in.readLine()) != null) {
                 contentBuilder.append(str);
@@ -56,7 +56,7 @@ public class EmailHelper {
                     InternetAddress.parse(toMailAddress)
             );
             message.setSubject(mailSubject);
-            message.setText(content);
+            message.setContent(content, "text/html; charset=utf-8");
 
             Transport.send(message);
 
