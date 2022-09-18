@@ -152,12 +152,12 @@ Proje de kullanılan portlar:</p>
 <p>Lokalinizde postgresql veritabanını kurduktan sonra yeni bir veritabanı oluşturun. Daha sonra aşağıdaki 
 SQL dosyalarını içeriye aktarın ve ilgili tabloların oluşturulmasını bekleyin</p>
  <ul>
-    <li><b>Account:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/account_202209180516.sql">SQL'e Git</a></li>
-    <li><b>cart:</b><a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/cart_202209180516.sql">SQL'e Git</a></li>
-    <li><b>category:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/category_202209180516.sql">SQL'e Git</a></li>
-    <li><b>menu:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/menu_202209180516.sql">SQL'e Git</a></li>
-    <li><b>orders:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/orders_202209180516.sql">SQL'e Git</a></li>
-    <li><b>product:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/sql/product_202209180516.sql">SQL'e Git</a></li>
+    <li><b>Account:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/sql/account_202209180516.sql">SQL'e Git</a></li>
+    <li><b>cart:</b><a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/sql/cart_202209180516.sql">SQL'e Git</a></li>
+    <li><b>category:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master//docs/sql/category_202209180516.sql">SQL'e Git</a></li>
+    <li><b>menu:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/sql/menu_202209180516.sql">SQL'e Git</a></li>
+    <li><b>orders:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/sql/orders_202209180516.sql">SQL'e Git</a></li>
+    <li><b>product:</b> <a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/sql/product_202209180516.sql">SQL'e Git</a></li>
   </ul>
 
 
@@ -316,7 +316,7 @@ User sınıfı ile ilgili tüm endpointler ve açıklamalar.
 ortamı eklenmiştir. İlgili alanlardaki url adreslerini düzenleyerek ortam testlerinizi gerçekleştirebilirsiniz.<br/>
 
 2.Aşağıdaki linkten Postman API koleksiyonunu indirebilirsiniz.<br/>
-<b><a href="https://github.com/byofficial/ibtech-java-developer-final/main/docs/json/Ibtech.postman_collection.json">
+<b><a href="https://github.com/byofficial/ibtech-java-developer-final/tree/master/docs/json/Ibtech.postman_collection.json">
 Postman Koleksiyonu İndir</a></b>
 
 </p>
