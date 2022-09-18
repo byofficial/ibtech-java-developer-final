@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "4dafcafc-fec0-4e65-8f68-ece442db1574",
+		"name": "Ibtech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17201675"
+	},
+	"item": [
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add to cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/cart/create?id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"create"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{site_url}}/api/cart/checkout"
+					},
+					"response": []
+				},
+				{
+					"name": "Increment cart product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/cart/qty?operation=inc&id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"qty"
+							],
+							"query": [
+								{
+									"key": "operation",
+									"value": "inc"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove product to cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/cart/remove?id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"remove"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order Remove",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/order/remove?id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"remove"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "All menus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{site_url}}/api/menus"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "ProductList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{site_url}}/api/products"
+					},
+					"response": []
+				},
+				{
+					"name": "ProductFindById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/product?id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductListFindByCategoryId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site_url}}/api/products/category?id=1",
+							"host": [
+								"{{site_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"category"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "CategoryList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{site_url}}/api/categories"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "login-account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<accountName>demo</accountName>\r\n<accountPassword>demo</accountPassword>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "{{site_url}}/login-account"
+					},
+					"response": []
+				},
+				{
+					"name": "register-account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<accountName>demo</accountName>\r\n<accountEmail>demo@demo.com</accountEmail>\r\n<accountPassword>demo</accountPassword>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "{{site_url}}/register-account"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{site_url}}/logout"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
